@@ -183,9 +183,9 @@ class IndexManager:
         """
         self.load_index_types()
 
-        for index in settings.KH_INDICES:
-            if not self.exists(name=index["name"]):
-                self.build_index(**index)
+        # for index in settings.KH_INDICES:
+        #     if not self.exists(name=index["name"]):
+        #         self.build_index(**index)
 
         with Session(engine) as sess:
             index_defs = sess.exec(select(Index))

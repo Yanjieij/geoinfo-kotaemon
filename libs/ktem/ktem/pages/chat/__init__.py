@@ -275,7 +275,7 @@ class ChatPage(BasePage):
                         "Quick Upload" if not KH_DEMO_MODE else "Or input new paper URL"
                     )
 
-                    with gr.Accordion(label=quick_upload_label) as _:
+                    with gr.Accordion(label=quick_upload_label, visible=False) as _:
                         self.quick_file_upload_status = gr.Markdown()
                         if not KH_DEMO_MODE:
                             self.quick_file_upload = File(
@@ -1223,9 +1223,9 @@ class ChatPage(BasePage):
             settings["reasoning.options.simple.create_mindmap"] = session_use_mindmap
 
         if session_use_citation not in (DEFAULT_SETTING, None):
-            settings[
-                "reasoning.options.simple.highlight_citation"
-            ] = session_use_citation
+            settings["reasoning.options.simple.highlight_citation"] = (
+                session_use_citation
+            )
 
         if session_language not in (DEFAULT_SETTING, None):
             settings["reasoning.lang"] = session_language
